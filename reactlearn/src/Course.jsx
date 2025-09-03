@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 function Course(props) {
     if (props.show === true) {
         return (
-            <div className="card">
+            props.name && <div className="card">
                 <img src="" alt="" />
                 <h1>{props.name}</h1>
                 <p>{props.price}</p>
