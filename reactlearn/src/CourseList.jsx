@@ -1,37 +1,53 @@
+import { useState } from "react";
 import Course from "./Course";
 
 function CourseList() {
-    const courses = [
+    const [courses, setCourses] = useState([
         {
+            id: 1,
             name: "HTML",
             price: 199,
             rating: 5
         },
         {
+            id: 2,
             name: "CSS",
             price: 999,
             rating: 5
         },
         {
+            id: 3,
             name: "JS",
             price: 499,
             rating: 5
         }
-    ];
-    courses.sort((x,y)=>x.price-y.price)
-    // const a= courses.filter((courses)=>courses.price<200)
+    ]);
 
-    const coursesList = courses.map((course, index) => (
-        <Course 
-            key={index} 
-            name={course.name} 
-            price={course.price} 
-            rating={course.rating} 
-            show={true} // Add this if you're using `props.show`
+    function handleDelete(id) {
+        const newCourses = courses.filter((course) => course.id !== id);
+        setCourses(newCourses);
+    }
+
+    const sortedCourses = [...courses].sort((x, y) => x.price - y.price);
+
+    const coursesList = sortedCourses.map((course) => (
+        <Course
+            key={course.id}
+            name={course.name}
+            price={course.price}
+            rating={course.rating}
+            show={true}
+            id={course.id}
+            delete={handleDelete}
         />
     ));
 
-    return <>{coursesList}</>;
+    return (
+        <div>
+            <h2>Available Courses</h2>
+            {coursesList}
+        </div>
+    );
 }
 
 export default CourseList;
