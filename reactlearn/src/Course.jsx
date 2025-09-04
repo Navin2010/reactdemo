@@ -1,8 +1,15 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 function Course(props) {
+    // let purchased=false;
+    const [purchased,setPurchased]=useState(false);
     function Buy(discount){
         console.log(props.name,"Purchased with",discount,"% discount");
+        // purchased=true;
+        setPurchased(true);
+        console.log(purchased)
+
         
     }
     
@@ -12,6 +19,7 @@ function Course(props) {
                 <h1>{props.name}</h1>
                 <p>{props.price}</p>
                 <button onClick={(event)=>{Buy(20,event);console.log(event)}}>buy now</button>
+                <p>{purchased ? "Already purchased": "Get it now"}</p>
             </div>
         );
     }
