@@ -1,19 +1,22 @@
 import PropTypes from 'prop-types';
 
 function Course(props) {
-    if (props.show === true) {
+    function Buy(discount){
+        console.log(props.name,"Purchased with",discount,"% discount");
+        
+    }
+    
         return (
             props.name && <div className="card">
-                <img src="" alt="" />
+                {/* <img src="" alt="" /> */}
                 <h1>{props.name}</h1>
                 <p>{props.price}</p>
-                <p>Rating:{props.rating}</p>
+                <button onClick={(event)=>{Buy(20,event);console.log(event)}}>buy now</button>
             </div>
         );
     }
 
-    return null; // Return nothing if show is false
-}
+  
 
 Course.defaultProps = {
     name: "HTML",

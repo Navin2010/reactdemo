@@ -19,9 +19,9 @@ function CourseList() {
         }
     ];
     courses.sort((x,y)=>x.price-y.price)
-    const a= courses.filter((courses)=>courses.price<200)
+    // const a= courses.filter((courses)=>courses.price<200)
 
-    const coursesList = a.map((course, index) => (
+    const coursesList = courses.map((course, index) => (
         <Course 
             key={index} 
             name={course.name} 
